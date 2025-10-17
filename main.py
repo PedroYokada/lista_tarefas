@@ -95,10 +95,27 @@ def main(a):
             b_alterar.grid(row=2, column=0, sticky=NSEW, pady=1)
 
         on()
+        
+def remover():
+    try:
+        v_selecionado = listbox.curselection()[0]
+        palavra = listbox.get(v_selecionado)
 
-        def remove():
-            
-    
+        tarefas = selecionar()
+
+        for item in tarefas:
+            if palavra == item[1]:
+                deletar([item[0]])
+
+        listbox.delete(0, END)
+        mostrar()
+    except IndexError:
+        print("Nenhuma tarefa selecionada.")
+
+# Agora sim, o botão pode usar a função
+b_remover = Button(frame_e_cima, text="Remover", width=10, height=1, bg=co4, fg="white",
+                   font=5, anchor="center", relief=RAISED, command=remover)
+b_remover.grid(row=0, column=1, sticky=NSEW, pady=1)
 
 # Criação de botões novo, remover e atualizar
 
@@ -106,7 +123,7 @@ b_novo = Button(frame_e_cima,text="Novo", width=10, height=1,bg=co3,fg="white", 
 
 b_novo.grid(row=0, column=0, sticky=NSEW,pady=1)
 
-b_remover = Button(frame_e_cima,text="Remover", width=10, height=1,bg=co4,fg="white", font=5,anchor="center", relief=RAISED)
+b_remover = Button(frame_e_cima,text="Remover", width=10, height=1,bg=co4,fg="white", font=5,anchor="center", relief=RAISED,command=remover)
 
 b_remover.grid(row=0, column=1, sticky=NSEW,pady=1)
 
@@ -129,8 +146,6 @@ listbox.grid(row=1, column=0, sticky=NSEW,pady=1)
 # tarefas = ["Pagar contas", "Realizar um site", "Fazer o curso de Back-End","Ir para a faculdade"]
 
 # print(tarefas)
-
-
 
 def mostrar ():
     listbox.delete(0,END)
