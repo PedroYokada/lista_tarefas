@@ -9,7 +9,7 @@ con=lite.connect("lista.db")
 def inserir(i):
     with con:
         cur = con.cursor()
-        query= "INSERT INTO tarefa(nome) VALUES('?') "
+        query = "INSERT INTO tarefa(nome) VALUES(?)"
         cur.execute(query, i)
 
 def selecionar(): 
@@ -31,7 +31,7 @@ def deletar(i):
 def atualizar(i):
     with con:
         cur = con.cursor()
-        query= "UPDATE tarefa SET nome='Comer' WHERE id=?"
+        query= "UPDATE tarefa SET nome=? WHERE id=?"
         cur.execute(query,i)    
         
         
