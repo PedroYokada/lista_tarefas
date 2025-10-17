@@ -20,6 +20,36 @@ def selecionar():
         row=cur.fetchall()
         for r in row:
              lista_tarefa.append(r)
+    return lista_tarefa
+
+def deletar(i):
+    with con:
+        cur = con.cursor()
+        query= "DELETE FROM tarefa where id=?"
+        cur.execute(query, i)
+    
+def atualizar(i):
+    with con:
+        cur = con.cursor()
+        query= "UPDATE tarefa SET nome='Comer' WHERE id=?"
+        cur.execute(query,i)    
+        
+        
+        
+        
+# print(selecionar())
+
+    
+# with con:
+#      cur = con.cursor()
+#      cur.execute("UPDATE tarefa SET nome='Comer' WHERE id=3")    
+        
+              
+# with con:
+#     cur = con.cursor()
+#     cur.execute("DELETE FROM tarefa WHERE id = 4 ")
+    
+
     
 # with con:
 #     cur = con.cursor()
